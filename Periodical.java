@@ -3,8 +3,8 @@ public class Periodical extends LibraryItem {
 
 	private int year;
 	
-	public Periodical(String title, String author, int id, int pages, Condition condition, int year) {
-		super(title, author, id, pages, condition);
+	public Periodical(String title, String author, int isbn, int pages, String condition, int year) {
+		super(title, author, isbn, pages, condition);
 		this.year = year;
 	}
 	// getters

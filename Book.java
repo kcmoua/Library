@@ -3,8 +3,8 @@ public class Book extends LibraryItem {
 
 	private String genre;
 	
-	public Book(String title, String author, int id, int pages, Condition condition, String genre) {
-		super(title, author, id, pages, condition);
+	public Book(String title, String author, int isbn, int pages, String condition, String genre) {
+		super(title, author, isbn, pages, condition);
 		this.genre = genre;
 	}
 	// getters
