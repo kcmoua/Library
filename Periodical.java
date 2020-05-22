@@ -1,10 +1,13 @@
 
 public class Periodical extends LibraryItem {
-
+	// variables
 	private int year;
-	
-	public Periodical(String title, String author, int isbn, int pages, String condition, int year) {
-		super(title, author, isbn, pages, condition);
+	// constructors
+	public Periodical() {
+		
+	}
+	public Periodical(String title, int pages, Author author, PublishingCompany pubCompany, Condition condition, int year) {
+		super(title, pages, author, pubCompany, condition);
 		this.year = year;
 	}
 	// getters
@@ -15,4 +18,5 @@ public class Periodical extends LibraryItem {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	
 }

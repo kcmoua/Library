@@ -1,18 +1,39 @@
 
-public class Magazine extends Periodical {
-	
-	private String magazineType;
-	
-	public Magazine(String title, String author, int isbn, int pages, String condition, int year, String magazineType) {
-		super(title, author, isbn, pages, condition, year);
+public class Magazine extends Periodical implements Loanable, Reservable {
+	// MagType enum
+	public enum MagType {
+		POPULAR, TRADE, SCHOLARLY
+	}
+	// variables
+	private MagType magazineType;
+	// constructors
+	public Magazine() {
+		
+	}
+	public Magazine(String title, int pages, Author author, PublishingCompany pubCompany, Condition condition, int year, MagType magazineType) {
+		super(title, pages, author, pubCompany, condition, year);
 		this.magazineType = magazineType;
 	}
 	// getters
-	public String getMagazineType() {
+	public MagType getMagazineType() {
 		return this.magazineType;
 	}
 	// setters
-	public void setMagazineType(String magazineType) {
+	public void setMagazineType(MagType magazineType) {
 		this.magazineType = magazineType;
 	}
+	// interface methods
+	public boolean isLoanable() {
+		return true;
+	}
+	public double lateFee() {
+		return 3.0;
+	}
+	public LateFeeCharges lateFeeCharges() {
+		return LateFeeCharges.BIWEEKLY;
+	}
+	public boolean isReservable() {
+		return true;
+	}
+	
 }

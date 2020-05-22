@@ -1,18 +1,39 @@
 
-public class ReferenceBook extends Book {
-	
-	private String type;
-	
-	public ReferenceBook(String title, String author, int isbn, int pages, String condition, String genOrRef, String type) {
-		super(title, author, isbn, pages, condition, genOrRef);
-		this.type = type;
+public class ReferenceBook extends Book implements Loanable, Reservable{
+	// RefType enum
+	public enum RefType {
+		ALMANAC, ATLAS, BIBLIOGRAPHY, DICTIONARY, ENCYCLOPEDIA
+	}
+	// variables
+	private RefType refType;
+	// constructors
+	public ReferenceBook() {
+		
+	}
+	public ReferenceBook(String title, int pages, Author author, PublishingCompany pubCompany, Condition condition, BookType bookType, RefType refType) {
+		super(title, pages, author, pubCompany, condition, bookType);
+		this.refType = refType;
 	}
 	// getters
-	public String getType() {
-		return this.type;
+	public RefType getRefType() {
+		return this.refType;
 	}
 	// setters
-	public void setType(String type) {
-		this.type = type;
+	public void setRefType(RefType refType) {
+		this.refType = refType;
 	}
+	// interface methods
+	public boolean isLoanable() {
+		return false;
+	}
+	public double lateFee() {
+		return 3.0;
+	}
+	public LateFeeCharges lateFeeCharges() {
+		return LateFeeCharges.DAILY;
+	}
+	public boolean isReservable() {
+		return true;
+	}
+	
 }

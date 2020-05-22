@@ -1,10 +1,13 @@
 
-public class GeneralBook extends Book {
-	
+public class GeneralBook extends Book implements Loanable, Reservable {
+	// variables
 	private String genre;
-	
-	public GeneralBook(String title, String author, int isbn, int pages, String condition, String genOrRef, String genre) {
-		super(title, author, isbn, pages, condition, genOrRef);
+	// constructors
+	public GeneralBook() {
+		
+	}
+	public GeneralBook(String title, int pages, Author author, PublishingCompany pubCompany, Condition condition, BookType bookType, String genre) {
+		super(title, pages, author, pubCompany, condition, bookType);
 		this.genre = genre;
 	}
 	// getters
@@ -12,15 +15,21 @@ public class GeneralBook extends Book {
 		return this.genre;
 	}
 	// setters
-	public void setGenre(String type) {
+	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	
-	public static void isGenre(String genre) {
-		if(genre.toLowerCase().equals("anime")) {
-			System.out.println("Sorry, we do not carry the genre: " + genre + ".");
-		} else {
-			System.out.println("Yes, we have a wide selection of the genre: " + genre + ".");
-		}
+	// interface methods
+	public boolean isLoanable() {
+		return true;
 	}
+	public double lateFee() {
+		return 3.0;
+	}
+	public LateFeeCharges lateFeeCharges() {
+		return LateFeeCharges.MONTHLY;
+	}
+	public boolean isReservable() {
+		return true;
+	}
+	
 }

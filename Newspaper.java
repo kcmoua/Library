@@ -1,18 +1,35 @@
 
-public class Newspaper extends Periodical {
-	
-	private String publicationName;
-	
-	public Newspaper(String title, String author, int isbn, int pages, String condition, int year, String publicationName) {
-		super(title, author, isbn, pages, condition, year);
-		this.publicationName = publicationName;
+public class Newspaper extends Periodical implements Loanable, Reservable {
+	// variables
+	private String day;
+	// constructors
+	public Newspaper() {
+		
+	}
+	public Newspaper(String title, int pages, Author author, PublishingCompany pubCompany, Condition condition, int year, String day) {
+		super(title, pages, author, pubCompany, condition, year);
+		this.day = day;
 	}
 	// getters
-	public String getPublicationName() {
-		return this.publicationName;
+	public String getDay() {
+		return this.day;
 	}
 	// setters
-	public void setPublicationName(String publicationName) {
-		this.publicationName = publicationName;
+	public void setDay(String day) {
+		this.day = day;
 	}
+	// interface methods
+	public boolean isLoanable() {
+		return true;
+	}
+	public double lateFee() {
+		return 3.0;
+	}
+	public LateFeeCharges lateFeeCharges() {
+		return LateFeeCharges.WEEKLY;
+	}
+	public boolean isReservable() {
+		return true;
+	}
+	
 }
